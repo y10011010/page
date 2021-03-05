@@ -1,6 +1,7 @@
-  variable "image_id" {
-    type = string
-  }
+variable "image_id" {
+  type = string
+}
+
 terraform {
   required_providers {
     aws = {
@@ -20,7 +21,7 @@ resource "aws_instance" "example" {
   instance_type = "t2.micro"
 
   tags = {
-    Name = "ExampleInstance"
+    Name = "PAGE"
   }
 }
 
