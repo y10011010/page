@@ -1,8 +1,8 @@
 CONTAINER = page
-TAG = latest
-KEYS = $(shell pwd)/tmp/gnupg
-PASSWORDS = $(shell pwd)/tmp/passwords
-ADDRESS = $(shell pwd)/tmp/address
-WORKDIR = $(shell pwd)
-git_user = developer
-git_email = developer@company.com
+TAG       = latest
+git_user  = $(ID)
+git_email = $(ID)@rd.org
+WORKDIR   = $(shell pwd)
+KEYS      = $(WORKDIR)/$(git_user)/gnupg
+ADDRESS   = $(WORKDIR)/$(git_user)/address
+PASSWORDS = $(WORKDIR)/$(git_user)/passwords

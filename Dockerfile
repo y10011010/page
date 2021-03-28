@@ -12,5 +12,6 @@ ENV GIT_EMAIL $git_email
 
 RUN git config --global user.email $GIT_EMAIL
 RUN git config --global user.user $GIT_USER
-CMD bash
+
+ENTRYPOINT ./docker-entrypoint.sh
 

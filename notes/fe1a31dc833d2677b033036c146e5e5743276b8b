@@ -1,0 +1,2 @@
+every card has a partion for working space and then backups using restic
+the backups are encrypted and the workspace is cleaned when shutting down the VM

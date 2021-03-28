@@ -9,11 +9,8 @@
 #
 # $ gpg --export-secret-key --armour my@key.net > /work/key.asc
 
+ID = white
 APPLICATION_ENVIRONMENT ?= development
-
-
-# mdkir tmp/{address,passwords,gnupg}
-
 include $(APPLICATION_ENVIRONMENT).mk
 
 
@@ -21,7 +18,7 @@ VOLUME_PASS = /root/.password-store
 VOLUME_GPG = /root/.gnupg
 VOLUME_ABOOK = /root/.abook
 
-run: build
+run: prepare
 	docker run \
 		--rm -it \
 		-v $(WORKDIR):/work \
@@ -35,4 +32,8 @@ build:
 
 %.pkr.hcl:
 	packer build $@
+
+.PHONY: $(KEYS) $(ADDRESS) $(PASSWORDS)
+prepare: $(KEYS) $(ADDRESS) $(PASSWORDS)
+	for item in $?; do mkdir -p $$item; done
 
