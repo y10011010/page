@@ -1,2 +1,3 @@
-[0]>fe1a31dc833d2677b033036c146e5e5743276b8b partition disks
+[0]>d7e92b24d912e3669c678e7d8251e62c1679586e encryptVolume
+[0]>791059d39e8ca54e7d7817a05958295a70b8b581 secureErase
 [-0] fix issue building this project
