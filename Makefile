@@ -25,10 +25,28 @@ run: prepare
 		-v $(KEYS):$(VOLUME_GPG) \
 		-v $(ADDRESS):$(VOLUME_ABOOK) \
 		-v $(PASSWORDS):$(VOLUME_PASS) \
+		-v $(RESTIC_REPOSITORY):$(RESTIC_REPOSITORY) \
 		$(CONTAINER):$(TAG) $(COMMAND)
+	${MAKE} clean
+
+clean:
+	echo "\n FIXME..."
+	echo "\n Cleaning up..."
+	# restic -r $(RESTIC_REPOSITORY) --password-command=$(RESTIC_PASSWORD_COMMAND) backup --tag $(ID) $(WORKDIR)
+	diskutil eraseVolume APFS workspace $(WORKDIR)
+
 
 build:
-	docker build --build-arg git_user=$(git_user) --build-arg git_email=$(git_email) -t $(CONTAINER):$(TAG) .
+	docker build \
+		--build-arg git_user=$(git_user) \
+		--build-arg git_email=$(git_email) \
+		--build-arg passphrase=$(passphrase) \
+		--build-arg restic_repository=$(RESTIC_REPOSITORY) \
+		--build-arg restic_password_command=$(RESTIC_PASSWORD_COMMAND) \
+		-t $(CONTAINER):$(TAG) .
+
+.password-store/white@rand.org:
+	pass generate -n white@rand.org
 
 %.pkr.hcl:
 	packer build $@
@@ -36,4 +54,8 @@ build:
 .PHONY: $(KEYS) $(ADDRESS) $(PASSWORDS)
 prepare: $(KEYS) $(ADDRESS) $(PASSWORDS)
 	for item in $?; do mkdir -p $$item; done
+	cp start $(WORKDIR)/
+	cp key.stat $(WORKDIR)/
+	cp key.dyno $(WORKDIR)/
+	cp infile $(WORKDIR)/
 
