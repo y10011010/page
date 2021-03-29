@@ -1,0 +1,6 @@
+Key-Type: DSA
+Key-Length: 4096
+Subkey-Type: ELG-E
+Subkey-Length: 1024
+Name-Comment: does not expire
+Expire-Date: 0
