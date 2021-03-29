@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+chmod 700 /root/.gnupg
+chmod 700 /root/.password-store
+chmod 700 /root/.abook
+
+envsubst "$(cat /work/key.dyno)" < infile >> key.stat
+
+gpg --batch --generate-key "key.stat"
+
+bash
+
