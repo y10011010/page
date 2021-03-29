@@ -6,7 +6,7 @@ chmod 700 /root/.abook
 
 envsubst "$(cat /work/key.dyno)" < infile >> key.stat
 
-gpg --batch --generate-key "key.stat"
+# gpg --batch --generate-key "key.stat"
 
 bash
 
