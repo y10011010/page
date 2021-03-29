@@ -1,0 +1,7 @@
+~~enhance todays process with encryption one disk at a time starting with mr
+white~~
+
+that would require reformatting.. I don't have the knowledge to make decisions
+about this.
+
+backups are encrypted and volume is `randomDisk` on container exit
