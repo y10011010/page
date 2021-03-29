@@ -1,0 +1,3 @@
+Name-Real: ${GIT_USER}
+Name-Email: ${GIT_EMAIL}
+Passphrase: ${PASSPHRASE}
