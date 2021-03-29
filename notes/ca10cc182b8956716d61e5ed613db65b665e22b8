@@ -1,0 +1,10 @@
+on container exit secure erase ... level depending on the time of day
+turns out secure erase doesn't work on partitions, or requires the whole disk to
+be reformatted. This means the system could be rearchitected so that workspace
+and backups are not on the same drive.
+
+a workaround is to use      dd if=/dev/urandom of=random_file bs=1000000000
+count=1  to generate random data and overwrite workspace. Both options require
+some effort which there is no time for right now. It's a choice between security
+and expediency
+
