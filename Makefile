@@ -18,7 +18,16 @@ VOLUME_PASS = /root/.password-store
 VOLUME_GPG = /root/.gnupg
 VOLUME_ABOOK = /root/.abook
 
+/Volumes/workspace/.latest:
+	restic -r $(RESTIC_REPOSITORY) --password-command="$(RESTIC_PASSWORD_COMMAND)" --json snapshots | jq -r .[-1].short_id > $@
+
+restore:
+	restic -r $(RESTIC_REPOSITORY) --password-command="$(RESTIC_PASSWORD_COMMAND)" \
+		--json snapshots | jq -r .[-1].short_id > $@
+
 run: prepare
+	# pushd $(WORKDIR)
+	# restic -r $(RESTIC_REPOSITORY) --password-command=$(RESTIC_PASSWORD_COMMAND) restore 46dc561a --target .
 	docker run \
 		--rm -it \
 		-v $(WORKDIR):/work \
