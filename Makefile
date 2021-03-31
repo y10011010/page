@@ -41,7 +41,8 @@ run: prepare
 clean:
 	echo "\n FIXME..."
 	echo "\n Cleaning up..."
-	# restic -r $(RESTIC_REPOSITORY) --password-command=$(RESTIC_PASSWORD_COMMAND) backup --tag $(ID) $(WORKDIR)
+	# cd $(WORKDIR); rm -rf *.jpg; rm -rf key.*
+	# RESTIC_REPOSITORY=$(RESTIC_REPOSITORY) RESTIC_PASSWORD_COMMAND=$(RESTIC_PASSWORD_COMMAND) ID=$(ID) ./create-snapshot.sh
 	diskutil eraseVolume APFS workspace $(WORKDIR)
 
 
