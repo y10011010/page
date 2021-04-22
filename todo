@@ -1,3 +1,4 @@
 [0]>d7e92b24d912e3669c678e7d8251e62c1679586e encryptVolume
 [0]>791059d39e8ca54e7d7817a05958295a70b8b581 secureErase
 [-0] fix issue building this project
+make build
