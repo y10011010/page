@@ -1,3 +1,5 @@
 #!/usr/bin/env sh
 
-ls /Volumes/workspace | xargs restic backup --tag $ID
+cd /Volumes/workspace
+rm -rf key.* # build container artifact
+ls | grep $ORG | xargs restic backup --tag $ID --tag $ORG
