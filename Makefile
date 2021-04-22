@@ -55,7 +55,7 @@ build:
 		--build-arg restic_password_command=$(RESTIC_PASSWORD_COMMAND) \
 		-t $(CONTAINER):$(TAG) .
 
-.password-store/white@rand.org:
+.password-store/$(ORG)/$(ID):
 	pass generate -n white@rand.org
 
 %.pkr.hcl:
