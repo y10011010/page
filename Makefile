@@ -39,11 +39,10 @@ run: prepare
 	${MAKE} clean
 
 clean:
-	echo "\n FIXME..."
 	echo "\n Cleaning up..."
-	# cd $(WORKDIR); rm -rf *.jpg; rm -rf key.*
-	# RESTIC_REPOSITORY=$(RESTIC_REPOSITORY) RESTIC_PASSWORD_COMMAND=$(RESTIC_PASSWORD_COMMAND) ID=$(ID) ./create-snapshot.sh
-	diskutil eraseVolume APFS workspace $(WORKDIR)
+	RESTIC_REPOSITORY=$(RESTIC_REPOSITORY) RESTIC_PASSWORD_COMMAND=$(RESTIC_PASSWORD_COMMAND) ID=$(ID) ORG=$(ORG) ./create-snapshot.sh
+	diskutil eraseVolume ExFAT workspace $(WORKDIR)
+	echo "\nDone."
 
 
 build:
