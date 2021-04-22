@@ -1,11 +1,11 @@
-ORG       = rand
+ORG       = protonmail.com
 CONTAINER = page
 TAG       = latest
 git_user  = $(ID)
 git_email = $(ID)@$(ORG)
-passphrase = "$(shell pass show rand/$(ID)/master)"
+passphrase = "$(shell pass show $(ORG)/$(ID)"
 RESTIC_REPOSITORY ?= /Volumes/restic
-RESTIC_PASSWORD_COMMAND = "pass show $(ORG)/$(ID)/backup"
+RESTIC_PASSWORD_COMMAND = "pass show $(ORG)/$(ID).bak"
 WORKDIR   ?= /Volumes/workspace
 KEYS      = $(WORKDIR)/$(ORG)/$(git_user)/gnupg
 ADDRESS   = $(WORKDIR)/$(ORG)/$(git_user)/address
